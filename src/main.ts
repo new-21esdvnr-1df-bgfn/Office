@@ -3,6 +3,8 @@
 import { EmbeddedWebsite } from "@workadventure/iframe-api-typings";
 import { bootstrapExtra } from "@workadventure/scripting-api-extra";
 
+import { levelUp } from "@workadventure/quests";
+
 console.log('Script started successfully');
 
 let currentPopup: any = undefined;
@@ -143,7 +145,14 @@ WA.onInit().then( async () => {
         console.log('Scripting API Extra ready');
     }).catch(e => console.error(e));
 
-}).catch(e => console.error(e));
+// Victor Quest
+
+    WA.room.onEnterLayer("drone_zone").subscribe( async () => {
+          await levelUp("TEST_Iryna", 10);
+          console.log('Victor Test passed');
+          });
+
+  }).catch(e => console.error(e));
 
 
 
